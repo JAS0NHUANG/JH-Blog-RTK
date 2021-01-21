@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getPostsFromAPI } from '../utils/WebAPI';
 
 export const initialState = {
 	loading: false,
@@ -20,7 +21,7 @@ const postsSlice = createSlice({
 		},
 		getPostsFailure: state => {
 			state.loading = false;
-			state.hassErrors = true;
+			state.hasErrors = true;
 		},
 	},
 })
@@ -29,15 +30,14 @@ export const { getPosts, getPostsSuccess, getPostsFailure } = postsSlice.actions
 export const postsSelector = state => state.posts;
 export default postsSlice.reducer;
 
-export const fetchPosts = () => {
+export const fetchPosts = (page) => {
 	return async dispatch => {
 		dispatch(getPosts())
 
 		try {
-			const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-			const data = await response.json()
+			const responseData = await getPostsFromAPI(page);
 
-			dispatch(getPostsSuccess(data));
+			dispatch(getPostsSuccess(responseData));
 		} catch (error) {
 			dispatch(getPostsFailure());
 		}
