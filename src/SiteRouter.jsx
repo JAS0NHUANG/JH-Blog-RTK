@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './pages/Home';
+import SinglePost from './pages/SinglePost';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -15,11 +16,16 @@ const SiteRouter = () => {
 	return (
 		<Router>
 			<Header />
-			<Switch>
-				<Route exact path='/'>
-					<Home />
-				</Route>
-			</Switch>
+			<main>
+				<Switch>
+					<Route exact path='/'>
+						<Home />
+					</Route>
+					<Route exact path='/post/:id'>
+						<SinglePost />
+					</Route>
+				</Switch>
+			</main>
 			<Footer />
 		</Router>
 	)

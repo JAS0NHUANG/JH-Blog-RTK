@@ -2,8 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
-
-
 const PostWrapper = styled.div`
   text-align: left;
   margin: 30px 70px 20px;

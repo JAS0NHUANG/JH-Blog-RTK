@@ -12,7 +12,6 @@ export const getPostsFromAPI = async (page) => {
     'totalPosts': Number(responseData.headers.get('x-total-count')),
     'page': page,
   }
-  console.log(result)
   return result;
 };
 
