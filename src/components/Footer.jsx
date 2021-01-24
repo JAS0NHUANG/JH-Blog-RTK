@@ -6,11 +6,13 @@ const FooterWrapper = styled.div`
   position: relative;
   bottom: -76px;
   width: 100%;
-  border-bottom: #aaadaf 8px solid;
   box-shadow: 0px -10px 10px 10px #fff;
   background: #fff;
   z-index: 99;
   line-height: 30px;
+  ${MEDIA_QUERY_S}{
+    border-bottom: #aaadaf 8px solid;
+  }
 `;
 
 const FooterBody = styled.footer`
