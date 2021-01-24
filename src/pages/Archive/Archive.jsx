@@ -2,24 +2,19 @@ import React, { useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchPosts, postsSelector } from "../../slices/posts";
+import { userSelector } from "../../slices/user";
 
 import { Post } from "../../components/Post";
 import { Loading } from "../../components/Loading";
-import { Pagination } from "../../components/Pagination";
 
-const Home = () => {
+const Archive = () => {
   const dispatch = useDispatch();
-  const { posts, totalPosts, currentPage, isLoading, hasErrors } = useSelector(
-    postsSelector
-  );
+  const { posts, isLoading, hasErrors } = useSelector(postsSelector);
+  const { userId } = useSelector(userSelector);
 
   useLayoutEffect(() => {
-    dispatch(fetchPosts(1));
+    dispatch(fetchPosts());
   }, [dispatch]);
-
-  const handlePagination = (pageNumber) => {
-    dispatch(fetchPosts(pageNumber));
-  };
 
   const renderPosts = () => {
     if (isLoading) return <Loading />;
@@ -27,13 +22,8 @@ const Home = () => {
     return (
       <>
         {posts.map((post) => (
-          <Post key={post.id} post={post} excerpt />
+          <Post key={post.id} post={post} userId={userId} archive />
         ))}
-        <Pagination
-          currentPage={currentPage}
-          totalPosts={totalPosts}
-          handlePagination={handlePagination}
-        />
       </>
     );
   };
@@ -41,4 +31,4 @@ const Home = () => {
   return <>{renderPosts()}</>;
 };
 
-export default Home;
+export default Archive;

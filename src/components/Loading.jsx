@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const LoadingText = styled.div`
   color: #cdcecf;
   font-size: 28px;
-`
+`;
 const LoadingDots = styled.div`
   margin: auto;
   margin-top: 30px;
@@ -16,8 +16,9 @@ const LoadingDots = styled.div`
   color: #cdcecf;
   animation: dotFlashing 1s infinite linear alternate;
   animation-delay: 0.5s;
-  &::before, &::after {
-    content: '';
+  &::before,
+  &::after {
+    content: "";
     display: inline-block;
     position: absolute;
     top: 0;
@@ -52,7 +53,7 @@ const LoadingDots = styled.div`
       background-color: #fdfeff;
     }
   }
-`
+`;
 
 export const Loading = () => {
   return (
@@ -60,5 +61,5 @@ export const Loading = () => {
       <LoadingText>Loading</LoadingText>
       <LoadingDots />
     </>
-  )
-}
+  );
+};

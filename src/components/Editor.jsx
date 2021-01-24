@@ -1,10 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
-import {fetchMe, userSelector} from '../slices/user';
-
-import {getAuthToken} from '../utils/utils';
+import { fetchMe, userSelector } from "../slices/user";
+import {
+  sendPostRequest,
+  clearPostResponseData,
+  editorSelector,
+} from "../slices/editor";
 
 const EditorTitle = styled.input`
   font-size: 28px;
@@ -14,7 +18,7 @@ const EditorTitle = styled.input`
   border: none;
   border-bottom: 2px solid #cccdcf;
   width: 80%;
-`
+`;
 
 const EditorBody = styled.textarea`
   text-align: left;
@@ -23,43 +27,56 @@ const EditorBody = styled.textarea`
   width: 80%;
   resize: none;
   height: 500px;
-`
+`;
 
-export const Editor = ({
-  post,
-}) => {
+export const Editor = ({ post }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const token = getAuthToken();
-  const {user} = useSelector(userSelector);
+  const { user } = useSelector(userSelector);
+  const { postResponse } = useSelector(editorSelector);
 
-  useEffect( () => {
-    dispatch(fetchMe(token));
-  }, [dispatch, token])
+  useEffect(() => {
+    dispatch(fetchMe());
+    console.log(postResponse);
+    if (postResponse && postResponse.id) {
+      history.push(`/post/${postResponse.id}`);
+    }
+    return () => {
+      dispatch(clearPostResponseData());
+    };
+  }, [dispatch, postResponse, history]);
 
-  let title = '';
-  let body = '';
-  if (typeof post !== 'undefined') {
+  let title = "";
+  let body = "";
+  if (typeof post !== "undefined") {
     title = post.title;
     body = post.body;
   }
 
-  const [inputs, setInputs] = useState(() => 
-    ({
-      postTitle: title,
-      postBody: body,
-    })
-  )
-  const {postTitle, postBody } = inputs;
+  const [inputs, setInputs] = useState(() => ({
+    postTitle: title,
+    postBody: body,
+  }));
+  const { postTitle, postBody } = inputs;
 
-  const handleChange = event => {
-    const {name, value} = event.target;
-    setInputs(inputs => ({...inputs, [name]:value}));
-  }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInputs((inputs) => ({ ...inputs, [name]: value }));
+  };
 
-  const handleSubmit = event => {
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const { postTitle, postBody } = inputs;
+    let id = null;
+    if (typeof post !== "undefined") {
+      id = post.id;
+    }
+    await dispatch(sendPostRequest(postTitle, postBody, id));
+    console.log(postResponse);
+  };
+
   if (!user) {
-    return <div>You are now allowed here!</div>
+    return <div>You are now allowed here!</div>;
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -76,10 +93,10 @@ export const Editor = ({
         value={postBody}
         onChange={handleChange}
       />
-      <br/>
+      <br />
       <button>Submit</button>
     </form>
-  )
-}
+  );
+};
 
 export default Editor;

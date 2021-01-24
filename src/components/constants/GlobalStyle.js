@@ -1,13 +1,18 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+import { MEDIA_QUERY_S } from "./Breakpoints";
 
 const GlobalStyle = createGlobalStyle`
   * {
     @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
     font-family: 'Inconsolata', monospace;
-    font-size: 20px;
     margin: 0;
-    text-align: center;
     box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+    overflow-wrap: break-word;
+    ${MEDIA_QUERY_S} {
+      font-size: 20px;
+    }
   }
   li {
     list-style-type: none;
@@ -29,6 +34,21 @@ const GlobalStyle = createGlobalStyle`
   input {
     text-align: left;
     margin: 15px;
+  }
+  h1 {
+    font-size: 28px;
+    ${MEDIA_QUERY_S} {
+      font-size: 32px;
+    }
+  }
+  h2 {
+    margin: 10px 0 25px;
+    padding: 5px;
+    text-align: left;
+    font-size: 24px;
+    ${MEDIA_QUERY_S} {
+      font-size: 28px;
+    }
   }
 `;
 

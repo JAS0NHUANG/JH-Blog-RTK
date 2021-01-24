@@ -1,38 +1,40 @@
-import React, {useState, useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import {fetchMe, loginRequest, userSelector,} from '../../slices/user'
+import { fetchMe, loginRequest, userSelector } from "../../slices/user";
 
 export const Login = () => {
-  const dispatch = useDispatch()
-  const { user, userId, isLoading, hasErrors} = useSelector(userSelector);
+  const dispatch = useDispatch();
+  const { user } = useSelector(userSelector);
   const [inputs, setInputs] = useState({
-     username: '',
-     password: '',
+    username: "",
+    password: "",
   });
-  const {username, password} = inputs;
+  const { username, password } = inputs;
   const history = useHistory();
 
-  useEffect( () => {
-    dispatch(fetchMe())
-  }, [dispatch])
+  useEffect(() => {
+    dispatch(fetchMe());
+    if (user !== "") {
+      history.push("/");
+    }
+  }, [dispatch, user, history]);
 
   const handleChange = (event) => {
-    const {name, value} = event.target;
-    setInputs(inputs => ({...inputs, [name]:value}));
-  }
+    const { name, value } = event.target;
+    setInputs((inputs) => ({ ...inputs, [name]: value }));
+  };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const {username, password} = inputs;
-    dispatch(loginRequest(username, password))
-    history.push('/');
-  }
+    const { username, password } = inputs;
+    await dispatch(loginRequest(username, password));
+    dispatch(fetchMe());
+  };
 
   return (
     <section>
-      <h1>User</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Username
@@ -57,7 +59,7 @@ export const Login = () => {
         <button>Login</button>
       </form>
     </section>
-  )
-}
+  );
+};
 
 export default Login;

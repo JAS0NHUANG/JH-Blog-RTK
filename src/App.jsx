@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import GlobalStyle from './components/constants/GlobalStyle';
-import SiteRouter from './SiteRouter';
+import GlobalStyle from "./components/constants/GlobalStyle";
+import SiteRouter from "./SiteRouter";
 
 const App = () => {
-	return (
-		<>
-			<GlobalStyle />
-			<SiteRouter />
-		</>
-	);
-}
+  return (
+    <>
+      <GlobalStyle />
+      <SiteRouter />
+    </>
+  );
+};
 
 export default App;

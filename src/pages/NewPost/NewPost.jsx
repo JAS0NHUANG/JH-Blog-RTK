@@ -1,11 +1,7 @@
-import React, {useLayoutEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import React from "react";
 
-import {clearSinglePost} from '../../slices/post';
-import {Editor} from '../../components/Editor';
+import { Editor } from "../../components/Editor";
 
-const NewPost = () => {
-  return <Editor />
-}
+const NewPost = () => <Editor />;
 
 export default NewPost;
