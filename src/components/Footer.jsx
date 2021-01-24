@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { MEDIA_QUERY_S } from './constants/Breakpoints'
 
 const FooterWrapper = styled.div`
   height: 38px;
