@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.js": "/jh-blog-rtk/static/js/main.aa8758d2.chunk.js",
-    "main.js.map": "/jh-blog-rtk/static/js/main.aa8758d2.chunk.js.map",
+    "main.js": "/jh-blog-rtk/static/js/main.cf299406.chunk.js",
+    "main.js.map": "/jh-blog-rtk/static/js/main.cf299406.chunk.js.map",
     "runtime-main.js": "/jh-blog-rtk/static/js/runtime-main.6fea8805.js",
     "runtime-main.js.map": "/jh-blog-rtk/static/js/runtime-main.6fea8805.js.map",
     "static/js/2.e34ef5e1.chunk.js": "/jh-blog-rtk/static/js/2.e34ef5e1.chunk.js",
     "static/js/2.e34ef5e1.chunk.js.map": "/jh-blog-rtk/static/js/2.e34ef5e1.chunk.js.map",
     "index.html": "/jh-blog-rtk/index.html",
-    "static/js/2.e34ef5e1.chunk.js.LICENSE.txt": "/jh-blog-rtk/static/js/2.e34ef5e1.chunk.js.LICENSE.txt"
+    "static/js/2.e34ef5e1.chunk.js.LICENSE.txt": "/jh-blog-rtk/static/js/2.e34ef5e1.chunk.js.LICENSE.txt",
+    "static/media/Inconsolata.3841494d.woff": "/jh-blog-rtk/static/media/Inconsolata.3841494d.woff",
+    "static/media/Inconsolata.e73ec33c.woff2": "/jh-blog-rtk/static/media/Inconsolata.e73ec33c.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.6fea8805.js",
     "static/js/2.e34ef5e1.chunk.js",
-    "static/js/main.aa8758d2.chunk.js"
+    "static/js/main.cf299406.chunk.js"
   ]
 }
