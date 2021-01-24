@@ -87,7 +87,7 @@ export const Post = ({post, user, userId, excerpt, handleDeletePost}) => {
           </PostTitle>
         )
       }
-      {userId === post.userId && <ModPost to={`/editor/${post.id}`}>Edit</ModPost>}
+      {userId === post.userId && <ModPost to={`/edit-post/${post.id}`}>Edit</ModPost>}
       {userId === post.userId && <DeletePost onClick={handleDeletePost}>Delete</DeletePost>}
       <PostContent>
         {excerpt && post.body.length > 99 ? `${post.body.substring(0, 100)}...` : post.body}

@@ -2,9 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getPostsFromAPI } from '../utils/WebAPI';
 
 export const initialState = {
-	loading: false,
-	hasErrors: false,
 	posts: [],
+  totalPosts: 0,
+  currentPage: 1,
+	isLoading: false,
+	hasErrors: false,
 }
 
 const postsSlice = createSlice({
@@ -12,16 +14,18 @@ const postsSlice = createSlice({
 	initialState,
 	reducers: {
 		getPosts: state => {
-			state.loading = true;
+			state.isLoading = true;
 		},
 		getPostsSuccess: (state, action) => {
-			console.log(action.payload);
+      console.log(action.payload)
 			state.posts = action.payload.posts;
-			state.loading = false;
+			state.currentPage = action.payload.page;
+      state.totalPosts = action.payload.totalPosts;
+			state.isLoading = false;
 			state.hasErrors = false;
 		},
 		getPostsFailure: state => {
-			state.loading = false;
+			state.isLoading = false;
 			state.hasErrors = true;
 		},
 	},

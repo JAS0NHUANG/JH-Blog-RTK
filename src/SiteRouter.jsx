@@ -8,6 +8,10 @@ import {
 
 import Home from './pages/Home';
 import SinglePost from './pages/SinglePost';
+import NewPost from './pages/NewPost';
+import EditPost from './pages/EditPost';
+import About from './pages/About';
+import Login from './pages/Login';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -23,6 +27,18 @@ const SiteRouter = () => {
 					</Route>
 					<Route exact path='/post/:id'>
 						<SinglePost />
+					</Route>
+					<Route exact path='/new-post'>
+						<NewPost />
+					</Route>
+					<Route exact path='/edit-post/:id'>
+						<EditPost />
+					</Route>
+					<Route exact path='/about'>
+						<About />
+					</Route>
+					<Route exact path='/login'>
+						<Login />
 					</Route>
 				</Switch>
 			</main>

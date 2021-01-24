@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getSinglePostFromAPI } from '../utils/WebAPI';
 
 export const initialState = {
-	loading: false,
+	isLoading: false,
 	hasErrors: false,
 	post: {},
 }
@@ -12,26 +12,26 @@ const postSlice = createSlice({
 	initialState,
 	reducers: {
 		getPost: state => {
-			state.loading = true;
+			state.isLoading = true;
 		},
 		getPostSuccess: (state, action) => {
 			state.post = action.payload;
-			state.loading = false;
+			state.isLoading = false;
 			state.hasErrors = false;
 		},
 		getPostFailure: state => {
-			state.loading = false;
+			state.isLoading = false;
 			state.hasErrors = true;
 		},
 		clearPost: state => {
 			state.post = {};
-			state.loading = false;
+			state.isLoading = false;
 			state.hasErrors = false;
 		},
 	},
 })
 
-export const { getPost, getPostSuccess, getPostFailure } = postSlice.actions;
+export const { getPost, getPostSuccess, getPostFailure, clearPost } = postSlice.actions;
 export const postSelector = state => state.post;
 export default postSlice.reducer;
 
@@ -47,4 +47,10 @@ export const fetchSinglePost = (id) => {
 			dispatch(getPostFailure());
 		}
 	}
+}
+
+export const clearSinglePost = () => {
+	return dispatch => {
+		dispatch(clearPost());
+    }
 }

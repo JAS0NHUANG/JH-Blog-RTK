@@ -1,6 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux';
 import styled from 'styled-components'
-import {Link, useLocation} from 'react-router-dom'
+import {Link, useLocation, useHistory} from 'react-router-dom'
+
+import {fetchMe, userSelector} from '../slices/user';
+import {setAuthToken, getAuthToken} from '../utils/utils';
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -66,26 +70,48 @@ const NavItemHidden = styled(Link)`
   }
 `
 
-export default function Header({
-  dispatch,
-}) {
-  const location = useLocation()
+export const  Header = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const token = getAuthToken();
+  const history = useHistory();
+  const { user, userId } = useSelector(userSelector);
+
+  useEffect( () => {
+    dispatch(fetchMe(token));
+  },[dispatch, token])
+
+  const handleLogout = () => {
+    setAuthToken(null);
+    dispatch(fetchMe(token));
+    history.go(0);
+  }
+
   return (
     <HeaderWrapper>
       <HeaderBody>
         <Icon to='/'>JH</Icon>
         <nav>
-          <NavItem to='/editor' $active={location.pathname === '/editor'}>
-            New Post
-          </NavItem>
+          {
+            user && <NavItem to='/new-post' $active={location.pathname === '/new-post'}>
+                New Post
+              </NavItem>
+          }
           <NavItem to='/about' $active={location.pathname === '/about'}>
             About
           </NavItem>
-          <NavItemHidden to='/login' $active={location.pathname === '/login'}>
-            Login
-          </NavItemHidden>
+          {
+            user && <NavItem to='/' onClick={handleLogout}>Logout</NavItem>
+          }
+          {
+            !user && <NavItemHidden to='/login' $active={location.pathname === '/login'}>
+              Login
+            </NavItemHidden>
+          }
         </nav>
       </HeaderBody>
     </HeaderWrapper>
   )
 }
+
+export default Header;

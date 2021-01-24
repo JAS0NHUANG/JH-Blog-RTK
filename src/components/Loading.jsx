@@ -54,7 +54,7 @@ const LoadingDots = styled.div`
   }
 `
 
-export default function Loading() {
+export const Loading = () => {
   return (
     <>
       <LoadingText>Loading</LoadingText>
