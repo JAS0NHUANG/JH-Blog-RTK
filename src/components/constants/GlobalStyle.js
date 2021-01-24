@@ -1,9 +1,21 @@
 import { createGlobalStyle } from "styled-components";
+
 import { MEDIA_QUERY_S } from "./Breakpoints";
 
+import InconsolataWoff from '../../fonts/Inconsolata.woff';
+import InconsolataWoff2 from '../../fonts/Inconsolata.woff2';
+
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Inconsolata';
+    src: local('Inconsolata'),
+      url(${InconsolataWoff}) format('woff'),
+      url(${InconsolataWoff2}) format('woff2'),
+      font-weight: 300;
+      font-style: normal;
+  }
+
   * {
-    @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
     font-family: 'Inconsolata', monospace;
     margin: 0;
     box-sizing: border-box;
