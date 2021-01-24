@@ -18,7 +18,7 @@ const FooterWrapper = styled.div`
 
 const FooterBody = styled.footer`
   margin: auto;
-  padding: 0 10px;
+  padding: 0 5px;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -26,6 +26,9 @@ const FooterBody = styled.footer`
   align-items: left;
   line-height: 30px;
   align-items: center;
+  ${MEDIA_QUERY_S} {
+    padding: 0 10px;
+  }
 `;
 
 const InfoSection = styled.div`
@@ -38,8 +41,11 @@ const FooterText = styled.p`
 `;
 
 const CCIcon = styled.img`
-  margin: auto 10px;
+  margin: auto 5px;
   height: 20px;
+  ${MEDIA_QUERY_S} {
+    margin: auto 10px;
+  }
 `;
 
 const SocialSection = styled.div`
@@ -50,7 +56,10 @@ const SocialIcon = styled.img`
   display: inline-block;
   height: 28px;
   width: 28px;
-  margin: 0 15px;
+  margin: 0 5px;
+  ${MEDIA_QUERY_S} {
+    margin: 0 15px;
+  }
 `;
 
 export default function Footer() {
