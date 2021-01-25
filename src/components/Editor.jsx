@@ -37,7 +37,6 @@ export const Editor = ({ post }) => {
 
   useEffect(() => {
     dispatch(fetchMe());
-    console.log(postResponse);
     if (postResponse && postResponse.id) {
       history.push(`/post/${postResponse.id}`);
     }
@@ -72,7 +71,6 @@ export const Editor = ({ post }) => {
       id = post.id;
     }
     await dispatch(sendPostRequest(postTitle, postBody, id));
-    console.log(postResponse);
   };
 
   if (!user) {

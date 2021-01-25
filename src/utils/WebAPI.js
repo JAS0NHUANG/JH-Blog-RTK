@@ -28,11 +28,16 @@ export const getSinglePostFromAPI = async (id) => {
 
 export const getMeFromAPI = async () => {
   const token = getAuthToken();
-  const responseData = await fetch(`${API_URL}/me`, {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  });
+  let responseData;
+  try {
+	  responseData = await fetch(`${API_URL}/me`, {
+		headers: {
+		  authorization: `Bearer ${token}`,
+		},
+	  });
+  } catch (error) {
+	  responseData = error; 
+  }
   const jsonData = await responseData.json();
   return jsonData;
 };
