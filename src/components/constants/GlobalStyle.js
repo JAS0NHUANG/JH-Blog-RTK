@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 500px;
     max-width: 1080px;
     min-height: calc(100vh - 76px - 38px);
-    width: 100%;
+    width: 100vw;
     padding: 25px;
   }
   a {

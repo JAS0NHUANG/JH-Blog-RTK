@@ -12,7 +12,7 @@ import { MEDIA_QUERY_S } from "./constants/Breakpoints";
 const HeaderWrapper = styled.div`
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   border-top: #aaadaf 8px solid;
   box-shadow: 0px 10px 10px 10px #fff;
   background: #fff;
