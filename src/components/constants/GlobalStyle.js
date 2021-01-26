@@ -27,7 +27,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   li {
-    list-style-type: none;
+    list-style-position: inside;
+    text-align: left;
+    margin: 15px 30px;
   }
   main {
     position: relative;

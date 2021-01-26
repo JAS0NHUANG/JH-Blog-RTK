@@ -21,6 +21,7 @@ const HeaderWrapper = styled.div`
 
 const HeaderBody = styled.header`
   margin: auto;
+  padding-right: 15px;
   display: flex;
   width: 100%;
   max-width: 1080px;

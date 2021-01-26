@@ -3,12 +3,16 @@ import styled from "styled-components";
 
 const PaginationWrapper = styled.div`
   margin: auto;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   max-width: 80vw;
+  border: solid 3px #aaadaf;
+  border-radius: 10px;
+  padding: 5px;
 `;
 
 const PaginationItem = styled.div`
+  border-radius: 8px;
   cursor: pointer;
   padding: 5px;
   ${(props) =>
