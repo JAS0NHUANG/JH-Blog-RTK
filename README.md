@@ -1,6 +1,6 @@
 # JH Blog with React Toolkit
 
-### Demo: [JH Blog with React/Redux Toolkit](https://jas0nhuang.github.io/jh-blog-rtk/)
+### Demo: [JH Blog with React/Redux Toolkit](https://jas0nhuang.github.io/JH-Blog-RTK/)
 
 ### Homepage
 ![home](https://github.com/JAS0NHUANG/jh-blog-rtk/blob/main/img/homepage.png)
